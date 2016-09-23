@@ -19,9 +19,13 @@ class Gallery extends Application
 	 */
 	public function index()
 	{
-                //$this->load->view('gallery');
-		$this->data['pagebody'] = 'gallery';
-		$this->render(); 
+            //$this->load->view('gallery');
+            $this->load->library('table');
+            $query = $this->db->query('SELECT * FROM my_table');
+            $this->data['theTable'] = $this->table->generate($query);
+
+            $this->data['pagebody'] = 'gallery';
+            $this->render(); 
 	}
 
 }
